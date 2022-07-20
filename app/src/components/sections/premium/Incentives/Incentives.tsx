@@ -21,7 +21,7 @@ const Incentives: FC = ({ children }) => {
                     <ul className='md:flex justify-center mt-20 sm:px-48 md:px-6 px-24'>
                         {
                             incentives.map((incentive) => (
-                                <li className='items-center text-center text-xl font-yfitops font-bold w-72'>
+                                <li key={incentive.title} className='items-center text-center text-xl font-yfitops font-bold w-72'>
                                     <div className='flex justify-center'>
                                         <img src={incentive.img} className="rounded-full h-36" alt={incentive.alt} />
                                     </div>

@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import Footer from './src/components/common/Footer'
-import NavBar from './src/components/common/navBar'
+import NavBar from './src/components/common/NavBar'
+
 
 
 const Layout: FC = ({ children }) => {

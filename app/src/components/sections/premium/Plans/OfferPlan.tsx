@@ -34,7 +34,7 @@ const OfferPlan = () => {
         <div className='pb-20'>
             <ul className='xl:flex xl:px-0 px-28 lg:px-112 md:px-96 sm:px-56 justify-center'>
                 {plansPremium.map((plan) => (
-                    <div>
+                    <div key={plan.name}>
                         <div className='text-center w-72 shadow-2xl rounded-xl border-2 mr-4 bg-white h-128 mt-4'>
                             <div className='p-6'>
                                 <div className='py-2 text-left'>

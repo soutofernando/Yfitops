@@ -15,3 +15,4 @@ const Icon: FC<Props> = ({ d, className }) => {
     )
 }
 export default Icon
+

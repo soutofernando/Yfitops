@@ -2,11 +2,11 @@ import React from 'react'
 import OfferPlan from './OfferPlan'
 
 const paymentForms = [
-    { alt: "visa icon", img: "https://content-tooling.spotifycdn.com/images/52f004ea-a49a-420b-8dca-14f5304ff4bf_visa.svg" },
-    { alt: "mastercard icon", img: "https://content-tooling.spotifycdn.com/images/3a865441-c6d4-4f92-a4be-6c96c0e96d1f_mastercard.svg" },
-    { alt: "amex icon", img: "https://content-tooling.spotifycdn.com/images/d4dd3e5b-f7d9-4cd0-80f1-b65f19c5e55c_amex.svg" },
-    { alt: "elo icon", img: "https://content-tooling.spotifycdn.com/images/0a5cdc06-7024-4d04-999f-18e8b225b581_elo.svg" },
-    { alt: "hipercard icon", img: "https://content-tooling.spotifycdn.com/images/52f004ea-a49a-420b-8dca-14f5304ff4bf_visa.svg" },
+    { id:1, alt: "visa icon", img: "https://content-tooling.spotifycdn.com/images/52f004ea-a49a-420b-8dca-14f5304ff4bf_visa.svg" },
+    { id:2, alt: "mastercard icon", img: "https://content-tooling.spotifycdn.com/images/3a865441-c6d4-4f92-a4be-6c96c0e96d1f_mastercard.svg" },
+    { id:3, alt: "amex icon", img: "https://content-tooling.spotifycdn.com/images/d4dd3e5b-f7d9-4cd0-80f1-b65f19c5e55c_amex.svg" },
+    { id:4, alt: "elo icon", img: "https://content-tooling.spotifycdn.com/images/0a5cdc06-7024-4d04-999f-18e8b225b581_elo.svg" },
+    { id:5, alt: "hipercard icon", img: "https://content-tooling.spotifycdn.com/images/52f004ea-a49a-420b-8dca-14f5304ff4bf_visa.svg" },
 ]
 
 
@@ -24,7 +24,7 @@ const PlansPremium = () => {
                     <ul className='flex justify-center mt-4'>
                         {paymentForms.map((form) =>
                         (
-                            <li className='mr-2'>
+                            <li key={form.id} className='mr-2'>
                                 <div>
                                     <img className='w-8 h-8' src={form.img} alt={form.alt} />
                                 </div>

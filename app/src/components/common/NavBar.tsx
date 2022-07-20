@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
+import Logo from '../ui/logo/Logo'
 
 const optionsNavBar1 = [
     { name: "Premium", href: '/', link: "/premium" },
@@ -38,11 +39,7 @@ const NavBar = () => {
                             </div>
                             <div className="flex-1 flex  items-center justify-center sm:items-stretch md:justify-start">
                                 <a href='/' className='flex'>
-                                    <img
-                                        className=" h-14 lg:block w-auto"
-                                        src="https://i.pinimg.com/564x/8f/7c/12/8f7c1294dd4d1d9e7d496db521c04aca.jpg"
-                                        alt="spotify icon"
-                                    />
+                                    <Logo />
                                     <span className='items-center flex text-white font-yfitops font-extrabold text-2xl'>
                                         Yfitops
                                         <span className="text-xs">
@@ -54,7 +51,7 @@ const NavBar = () => {
 
                             <div className="absolute inset-y-0 right-0 md:flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 hidden">
                                 {optionsNavBar1.map((item) => (
-                                    <Link to={item.link}>
+                                    <Link key={item.name} to={item.link}>
                                         <div key={item.name}>
                                             <button className='text-white font-yfitops font-bold p-4 hover:text-green-400'>
                                                 {item.name}
@@ -64,7 +61,7 @@ const NavBar = () => {
                                 ))}
                                 <span className='text-white px-4 font-semibold'>|</span>
                                 {optionsNavBar2.map((item) => (
-                                    <Link to={item.link}>
+                                    <Link key={item.name} to={item.link}>
                                         <div key={item.name}>
                                             <button className='text-white font-yfitops font-bold p-4 hover:text-green-400'>
                                                 {item.name}

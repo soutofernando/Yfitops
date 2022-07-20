@@ -14,20 +14,25 @@ module.exports = {
     extend: {
       colors: {
         'pink-yfitops': '#ffd4db',
-        'white-gray':"#efefef",
+        'white-gray': "#efefef",
         'blue-ocean': "#2E77D0",
         'gray-ifitops': "#222326",
+        'gray-white': "#9D9D9D",
+        'gray-black': "#1E1E1E",
+        'gray-blackgray': "#1A1A1A"
       },
       spacing: {
         104: "420px",
         112: "484px"
       },
-      height:{
+      height: {
         "88": "368px",
-        "120":"620px",
-        "128":"660px"
+        "120": "620px",
+        "128": "660px"
       }
     },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 }
