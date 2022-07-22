@@ -1,7 +1,8 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronLeftIcon, ChevronRightIcon, MenuIcon, UploadIcon, XIcon } from '@heroicons/react/outline'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import SearchInput from '../../searchpage/searchInput/SearchInput'
 
 const navigationMenu = [
     { name: "Premium", link: "/premium" },
@@ -30,6 +31,9 @@ function classNames(...classes: any) {
 
 
 const NavigationMenu = () => {
+
+    const location = useLocation()
+
     return (
         <Disclosure as="nav" className="bg-black opacity-95 h-16">
             {({ open }) => (
@@ -59,7 +63,12 @@ const NavigationMenu = () => {
                                             <ChevronRightIcon className='w-7 h-7 text-gray-white' />
                                         </button>
                                     </div>
+
+                                    <div className='md:w-96 w-full ml-2  md:ml-10'>
+                                        {location.pathname == "/home/search" ? <SearchInput /> : ""}
+                                    </div>
                                 </div>
+
                             </div>
 
                             <div className="absolute inset-y-0 right-0 md:flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 hidden">
@@ -101,7 +110,7 @@ const NavigationMenu = () => {
                                         onClick={() => window.open(item.href)}
                                         className={classNames(
                                             'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                            'flex items-center justify-between px-3 py-2 rounded-md cursor:pointer text-base font-medium'
+                                            'flex items-center justify-between px-3 py-2 rounded-md  text-base font-medium'
                                         )}
                                     >
                                         {item.name}

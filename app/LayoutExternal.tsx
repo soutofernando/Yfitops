@@ -4,7 +4,7 @@ import NavBar from './src/components/common/NavBar'
 
 
 
-const Layout: FC = ({ children }) => {
+const LayoutExternal: FC = ({ children }) => {
     return (
         <div>
             <NavBar />
@@ -17,4 +17,4 @@ const Layout: FC = ({ children }) => {
     )
 }
 
-export default Layout
+export default LayoutExternal

@@ -1,10 +1,13 @@
 import React from 'react'
+import LayoutExternal from '~/LayoutExternal'
 import PremiumContainer from '~/src/components/premium/PremiumContainer'
 
 const premium = () => {
     return (
         <div>
-            <PremiumContainer />
+            <LayoutExternal>
+                <PremiumContainer />
+            </LayoutExternal>
         </div>
     )
 }
