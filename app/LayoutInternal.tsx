@@ -3,7 +3,16 @@ import IncentiveSignUp from './src/components/home/incentiveSignUp/IncentiveSign
 import NavigationMenu from './src/components/home/navigationMenu/NavigationMenu'
 import NavigationSideMenu from './src/components/home/navigationSideMenu/NavigationSideMenu'
 
-const LayoutInternal: FC = ({children}) => {
+
+interface Props{
+    variables: {
+        AUTH_ENDPOINT: string
+        CLIENT_ID: string
+        REDIRECT_URI: string
+    }
+}
+
+const LayoutInternal: FC<Props> = ({children, variables}) => {
     return (
         <div>
             <div>
@@ -15,9 +24,9 @@ const LayoutInternal: FC = ({children}) => {
                     </div>
                     <div className='flex-1'>
                         <div className='sticky top-0'>
-                            <NavigationMenu />
+                            <NavigationMenu variables={variables} />
                         </div>
-                        <div className='bg-gray-black pt-8'>
+                        <div className='bg-gray-black '>
                             <main>{children}</main>
                         </div>
                     </div>

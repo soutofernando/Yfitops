@@ -95,7 +95,7 @@ const FooterHome = () => {
                                 </Link>
                             ))}
                         </ul>
-                    </div>
+                    </div> 
                     <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                     <div className='mt-4 sm:mt-0'>
                         <div className='flex  items-center'>

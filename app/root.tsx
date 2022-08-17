@@ -1,4 +1,4 @@
-import type { MetaFunction,LinksFunction  } from "@remix-run/node";
+import type { MetaFunction, LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -7,6 +7,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import AuthProvider from "./src/contexts/auth/AuthProvider";
+import SearchProvider from "./src/contexts/search/SearchProvider";
 
 import styles from "./tailwind.css";
 
@@ -28,10 +30,14 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+        <AuthProvider>
+          <SearchProvider>
+            <Outlet />
+            <ScrollRestoration />
+            <Scripts />
+            <LiveReload />
+          </SearchProvider>
+        </AuthProvider>
       </body>
     </html>
   );

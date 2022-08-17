@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Footer from './src/components/common/Footer'
-import NavBar from './src/components/common/NavBar'
+import NavBar from './src/components/common/navBarExternal/NavBarExternal'
 
 
 
@@ -11,7 +11,6 @@ const LayoutExternal: FC = ({ children }) => {
             <div>
                 <main>{children}</main>
             </div>
-
             <Footer />
         </div>
     )

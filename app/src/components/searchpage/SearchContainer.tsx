@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '~/src/contexts/auth/AuthProvider'
+import { SearchContext } from '~/src/contexts/search/SearchProvider'
 import FooterHome from '../home/footerHome/FooterHome'
-import PossibleAlbums from './possibleAlbums/PossibleAlbums'
+import LoggedContainer from './LoggedContainer'
+import LoggedOutContainer from './LoggedOutContainer'
+
+
+
 
 const SearchContainer = () => {
+
+    const { searchInput,playlists } = useContext(SearchContext)
+    const { logged } = useContext(AuthContext)
+
     return (
-        <div>
-            <div>
-                <span className='text-white font-bold text-2xl p-12'>Browse all</span>
-            </div>
-            <div className='mt-6'>
-                <PossibleAlbums />
-            </div>
-            <div className='mt-6'>
-                <PossibleAlbums />
-            </div>
-            <div className='mt-6'>
-                <PossibleAlbums />
-            </div>
+        <div className='p-8'>
+            {console.log(playlists)}
+            {
+                logged == true && searchInput.length > 0 ?
+                    <div>
+                        <LoggedContainer />
+                    </div>
+                    :
+                    <div>
+                        <LoggedOutContainer />
+                    </div>
+            }
             <FooterHome />
         </div>
     )
