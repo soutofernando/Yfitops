@@ -21,7 +21,6 @@ interface SearchProps {
     setPlaylistDetails(array: getPlaylistDetails): void
     tracksPlaylist: getTracksPlaylist[]
     setTracksPlaylist(array: getTracksPlaylist[]): void
-
     userPlaylists: getUserPlaylists[]
     setUserPlaylists(array: getUserPlaylists[]): void
 
@@ -34,7 +33,7 @@ interface SearchProps {
     searchCategories(): void
     getPlaylistDetails(id: string): void
     musicTime(time: number): string
-    formatDate(date: string) : string
+    formatDate(date: string): string
 
 
 }
@@ -76,7 +75,7 @@ export const SearchContext = createContext<SearchProps>({
     tracksPlaylist: [],
     setTracksPlaylist: () => { },
     musicTime: (time: number) => "",
-    formatDate: (date : string) => "",
+    formatDate: (date: string) => "",
 
 })
 
@@ -102,12 +101,29 @@ const SearchProvider: FC = ({ children }) => {
         images: [{ url: "" }],
     })
     const [tracksPlaylist, setTracksPlaylist] = useState<getTracksPlaylist[]>([])
-
     const [userPlaylists, setUserPlaylists] = useState<getUserPlaylists[]>([])
     const [searchInput, setSearchInput] = useState("")
 
+    const artistsIds = playlists.map(({ id }) => { return id })
+    const tracksIds = tracks.map(({ id }) => { return id })
+    const artistsGenres = artists.map(({ genres }) => { return genres.toString() })
+    const artistsGenresClear = artistsGenres.filter((genre) => { return genre != "" })
+    const genresSelected = artistsGenresClear[Math.floor((Math.random() * artistsGenresClear.length))]
+    const tracksSelected = tracksIds[Math.floor((Math.random() * tracksIds.length))]
+    const artistsSelected = artistsIds[Math.floor((Math.random() * artists.length))]
+
+
     const searchRecommendations = async () => {
-       
+        await axios.get("https://api.spotify.com/v1/recommendations", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }, params: {
+                seed_artists: artistsSelected,
+                seed_genres: genresSelected,
+                seed_tracks: tracksSelected
+            }
+        }).then((res) => setRecommendations(res.data.tracks)).
+            catch((error) => console.log(error))
     }
 
     const searchGeneral = async () => {
@@ -124,6 +140,7 @@ const SearchProvider: FC = ({ children }) => {
         setPlaylists(data.playlists.items)
         setTracks(data.tracks.items)
         setAlbums(data.albums.items)
+
     }
 
     const searchUserPlaylist = async () => {

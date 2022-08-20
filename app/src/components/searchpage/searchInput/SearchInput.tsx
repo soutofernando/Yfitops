@@ -4,7 +4,7 @@ import { SearchContext } from '~/src/contexts/search/SearchProvider'
 
 const SearchInput = () => {
 
-    const { setSearchInput, searchGeneral, searchInput } = useContext(SearchContext)
+    const { setSearchInput, searchGeneral, searchInput} = useContext(SearchContext)
 
     useEffect(() => {
         searchGeneral()

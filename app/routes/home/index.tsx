@@ -18,10 +18,12 @@ const index = () => {
     useEffect(() => {
         getToken()
         searchRecommendations()
+
     }, [])
 
     return (
         <div>
+            {console.log(recommendations)}
             <HomeContainer />
         </div>
     )

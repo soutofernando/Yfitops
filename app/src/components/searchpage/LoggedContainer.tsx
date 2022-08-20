@@ -14,9 +14,11 @@ const LoggedContainer = () => {
     const filteredAlbums = albums.filter((album) => { return albums.indexOf(album) < 6 })
     const filteredPlaylists = playlists.filter((playlist) => { return playlists.indexOf(playlist) < 6 })
 
+   
 
     return (
         <div>
+            {console.log()}
             <div className='mt-6 md:flex'>
                 <div>
                     <div>

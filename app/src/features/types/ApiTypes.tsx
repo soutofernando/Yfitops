@@ -95,3 +95,20 @@ export interface getTracksPlaylist {
         ]
     }
 }
+
+export interface getRecommendations {
+    album: {
+        name: string
+        images: [{ url: string }]
+        id: string
+        release_date: string
+    }
+
+    artists : [{
+        id: string
+        name: string
+
+    }]
+    duration_ms: number
+    id: string
+}
