@@ -31,7 +31,7 @@ const LoggedOutContainer = () => {
                         }
                     </div>
                 </div> : 
-                <div className='p-4 mt-10 pb-20'>
+                <div className='mt-10 pb-24'>
                     <PleaseLogin />
                     </div>}
             </div>

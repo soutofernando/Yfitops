@@ -40,7 +40,7 @@ const optionsPrivacy = [
 const FooterHome = () => {
     return (
         <div>
-            <footer className="p-4 bg-gray-black mt-28 mb-16">
+            <footer className="p-4 bg-black-gray-2 mt-28 mb-16">
                 <div className="lg:flex md:justify-around py-4">
                     <div className="xl:grid grid-cols-3 gap-3 sm:gap-3 sm:grid-cols-3">
                         <div>

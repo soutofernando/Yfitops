@@ -1,7 +1,8 @@
 import { Disclosure } from '@headlessui/react'
-import { ChevronLeftIcon, ChevronRightIcon, MenuIcon, UploadIcon, XIcon } from '@heroicons/react/outline'
-import React, { FC } from 'react'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { AuthContext } from '~/src/contexts/auth/AuthProvider'
 import SearchInput from '../../searchpage/searchInput/SearchInput'
 import NavigationLocationBtns from './NavigationLocationBtns'
 import NavigationMenuBtns from './NavigationMenuBtns'
@@ -11,17 +12,8 @@ const navigationMenu2 =
     { name: "Sign up", link: "/signup" }
 
 
-interface Props {
-    variables: {
-        AUTH_ENDPOINT: string
-        CLIENT_ID: string
-        REDIRECT_URI: string
-
-    }
-}
-
-const NavigationMenu: FC<Props> = ({ variables }) => {
-
+const NavigationMenu = () => {
+    const { variables } = useContext(AuthContext)
     const location = useLocation()
 
     return (
@@ -44,7 +36,7 @@ const NavigationMenu: FC<Props> = ({ variables }) => {
                             <div className="flex-1 flex  items-center lg:justify-start justify-center sm:items-stretch ">
                                 <div className='flex items-center h-6'>
                                     <div>
-                                       <NavigationLocationBtns />
+                                        <NavigationLocationBtns />
                                     </div>
 
                                     <div className='md:w-96 w-full ml-2  md:ml-10'>
@@ -67,7 +59,7 @@ const NavigationMenu: FC<Props> = ({ variables }) => {
                                             </div>
                                         </Link>
                                         <div className='ml-6' >
-                                            <a href={`${variables.AUTH_ENDPOINT}?client_id=${variables.CLIENT_ID}&redirect_uri=${variables.REDIRECT_URI}&response_type=token`}>
+                                            <a href={`${variables?.AUTH_ENDPOINT}?client_id=${variables?.CLIENT_ID}&redirect_uri=${variables?.REDIRECT_URI}&response_type=token`}>
                                                 <button className='text-black font-bold hover:text-extrabold hover:bg-gray-white hover:text-white hover:transition-all hover:duration-300 bg-white rounded-full py-4 px-8'>Log in</button>
                                             </a>
                                         </div>

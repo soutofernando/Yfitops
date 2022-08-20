@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import Footer from './src/components/common/Footer'
+import Footer from './src/components/common/footer/Footer'
 import NavBar from './src/components/common/navBarExternal/NavBarExternal'
 
 

@@ -6,7 +6,7 @@ import FooterHome from './footerHome/FooterHome'
 const HomeContainer = () => {
   return (
     <div>
-      <div className='bg-gray-black'>
+      <div className='bg-black-gray-2'>
         <div>
           <AlbumSuggestionContainer />
         </div>

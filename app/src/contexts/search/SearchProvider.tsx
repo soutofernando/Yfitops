@@ -23,7 +23,6 @@ interface SearchProps {
     setTracksPlaylist(array: getTracksPlaylist[]): void
     userPlaylists: getUserPlaylists[]
     setUserPlaylists(array: getUserPlaylists[]): void
-
     searchInput: string
     setSearchInput(artist: string): void
 

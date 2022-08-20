@@ -104,11 +104,19 @@ export interface getRecommendations {
         release_date: string
     }
 
-    artists : [{
+    artists: [{
         id: string
         name: string
 
     }]
     duration_ms: number
     id: string
+}
+
+export interface variablesAmbient {
+    variables: {
+        CLIENT_ID: string
+        REDIRECT_URI: string
+        AUTH_ENDPOINT: string
+    }
 }

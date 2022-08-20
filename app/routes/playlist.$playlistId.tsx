@@ -10,17 +10,12 @@ import { SearchContext } from '~/src/contexts/search/SearchProvider';
 export const loader: LoaderFunction = async ({ params }) => {
     return {
         playlistId: params.playlistId,
-        variables: {
-            "CLIENT_ID": process.env.CLIENT_ID,
-            "REDIRECT_URI": process.env.REDIRECT_URI,
-            "AUTH_ENDPOINT": process.env.AUTH_ENDPOINT,
-        }
     }
 };
 
 const playlist = () => {
 
-    const { playlistId, variables } = useLoaderData()
+    const { playlistId } = useLoaderData()
     const { getPlaylistDetails } = useContext(SearchContext)
 
     useEffect(() => {
@@ -29,7 +24,7 @@ const playlist = () => {
 
     return (
         <div>
-            <LayoutInternal variables={variables}>
+            <LayoutInternal >
                 <PlaylistDetailsContainer />
             </LayoutInternal>
         </div>

@@ -27,7 +27,7 @@ const LibraryContainer = () => {
                             )))
                         }
                     </div> :
-                    <div className='mt-10 p- pb-24'>
+                    <div className='mt-10 pb-24'>
                         <PleaseLogin />
                     </div>}
             </div>

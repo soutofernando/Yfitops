@@ -1,4 +1,5 @@
 import React, { createContext, FC, useEffect, useState } from 'react'
+import { variablesAmbient } from '~/src/features/types/ApiTypes'
 
 interface AuthProps {
     token: string
@@ -6,6 +7,12 @@ interface AuthProps {
     getToken(): void
     logged: boolean
     setLogged(login: boolean): void
+    variables: {
+        "CLIENT_ID": string,
+        "REDIRECT_URI": string,
+        "AUTH_ENDPOINT": string,
+    },
+    setVariables(variables: any): void
 }
 
 export const AuthContext = createContext<AuthProps>({
@@ -14,12 +21,23 @@ export const AuthContext = createContext<AuthProps>({
     getToken: () => { },
     logged: false,
     setLogged: () => { },
+    variables: {
+        "CLIENT_ID": "",
+        "REDIRECT_URI": "",
+        "AUTH_ENDPOINT": "",
+    },
+    setVariables: () => { },
 })
 
 const AuthProvider: FC = ({ children }) => {
 
     const [token, setToken] = useState("")
     const [logged, setLogged] = useState(false)
+    const [variables, setVariables] = useState({
+        "CLIENT_ID": "",
+        "REDIRECT_URI": "",
+        "AUTH_ENDPOINT": "",
+    })
 
     const getToken = () => {
         let urlParams = new URLSearchParams(window.location.hash.replace("#", "?"));
@@ -27,8 +45,9 @@ const AuthProvider: FC = ({ children }) => {
         if (token != null) {
             setToken(token)
             localStorage.setItem("accessToken", token)
-    }
-        setLogged(!logged)
+        }
+
+        setLogged(true)
     }
 
     return (
@@ -38,6 +57,8 @@ const AuthProvider: FC = ({ children }) => {
             getToken,
             logged,
             setLogged,
+            variables,
+            setVariables,
         }}>
             {children}
         </AuthContext.Provider>

@@ -18,7 +18,6 @@ const LoggedContainer = () => {
 
     return (
         <div>
-            {console.log()}
             <div className='mt-6 md:flex'>
                 <div>
                     <div>

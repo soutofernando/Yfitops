@@ -1,29 +1,36 @@
 import { LoaderFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import React, { useContext, useEffect, useState } from 'react'
-import LayoutInternal from '~/LayoutInternal'
+import React, { useContext, useEffect } from 'react'
 import HomeContainer from '~/src/components/home/homeContainer'
-import axios from 'axios'
 import { AuthContext } from '~/src/contexts/auth/AuthProvider'
 import { SearchContext } from '~/src/contexts/search/SearchProvider'
+import { variablesAmbient } from '~/src/features/types/ApiTypes'
 
 
 
+export const loader: LoaderFunction = async () => {
+    return {
+        variables: {
+            "CLIENT_ID": process.env.CLIENT_ID,
+            "REDIRECT_URI": process.env.REDIRECT_URI,
+            "AUTH_ENDPOINT": process.env.AUTH_ENDPOINT,
+        }
+    }
+}
 
 const index = () => {
-
-    const { getToken } = useContext(AuthContext)
-    const { searchRecommendations, recommendations } = useContext(SearchContext)
+    const { variables } = useLoaderData<variablesAmbient>()
+    const { getToken, setVariables } = useContext(AuthContext)
+    const { searchRecommendations } = useContext(SearchContext)
 
     useEffect(() => {
         getToken()
         searchRecommendations()
-
+        setVariables(variables)
     }, [])
 
     return (
         <div>
-            {console.log(recommendations)}
             <HomeContainer />
         </div>
     )

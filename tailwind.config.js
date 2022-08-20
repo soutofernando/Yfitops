@@ -12,9 +12,6 @@ module.exports = {
       "yfitops": "Roboto, sans-serif"
     },
     extend: {
-      backgroundImage: {
-        'hero-support': "url('/app/static/heroSupport/search-desktop.png')",
-      },
       colors: {
         'pink-yfitops': '#ffd4db',
         'white-gray': "#efefef",
@@ -23,7 +20,8 @@ module.exports = {
         'gray-white': "#9D9D9D",
         'gray-black': "#0d0d0d",
         'gray-blackgray': "#1A1A1A",
-        'black-gray': "#181818",
+        'black-gray': "#161616",
+        'black-gray-2': "#121212",
         'black-gray-hover': "#1e1e1e"
       },
 

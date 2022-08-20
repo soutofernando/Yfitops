@@ -4,15 +4,8 @@ import NavigationMenu from './src/components/home/navigationMenu/NavigationMenu'
 import NavigationSideMenu from './src/components/home/navigationSideMenu/NavigationSideMenu'
 
 
-interface Props{
-    variables: {
-        AUTH_ENDPOINT: string
-        CLIENT_ID: string
-        REDIRECT_URI: string
-    }
-}
 
-const LayoutInternal: FC<Props> = ({children, variables}) => {
+const LayoutInternal: FC = ({ children }) => {
     return (
         <div>
             <div>
@@ -24,9 +17,9 @@ const LayoutInternal: FC<Props> = ({children, variables}) => {
                     </div>
                     <div className='flex-1'>
                         <div className='sticky top-0'>
-                            <NavigationMenu variables={variables} />
+                            <NavigationMenu />
                         </div>
-                        <div className='bg-gray-black '>
+                        <div className='bg-black-gray-2'>
                             <main>{children}</main>
                         </div>
                     </div>
