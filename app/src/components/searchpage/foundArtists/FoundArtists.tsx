@@ -14,9 +14,9 @@ const FountArtists: FC<ArtistsProps> = ({ image, name, type }) => {
             </div>
             <div className='mt-4'>
                 <p className='text-white w-full text-xl font-bold overflow-hidden whitespace-nowrap text-ellipsis'>{name}</p>
-            </div>
+        </div>
             <div className='mt-1 pb-10'>
-                <span className='text-gray-white font-semibold'>{type[0].toUpperCase() + type.substring(1)}</span>
+                <p className='text-gray-white font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>{type[0].toUpperCase() + type.substring(1)}</p>
             </div>
         </div>
     )

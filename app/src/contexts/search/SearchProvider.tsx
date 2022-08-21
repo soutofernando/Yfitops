@@ -25,6 +25,8 @@ interface SearchProps {
     setUserPlaylists(array: getUserPlaylists[]): void
     searchInput: string
     setSearchInput(artist: string): void
+    openModal: boolean
+    setOpenModal(open: boolean): void
 
     searchUserPlaylist(): void
     searchGeneral(): void
@@ -33,6 +35,7 @@ interface SearchProps {
     getPlaylistDetails(id: string): void
     musicTime(time: number): string
     formatDate(date: string): string
+
 
 
 }
@@ -70,6 +73,8 @@ export const SearchContext = createContext<SearchProps>({
         type: "",
         images: [{ url: "" }],
     },
+    openModal: false,
+    setOpenModal: () => { },
     setPlaylistDetails: () => { },
     tracksPlaylist: [],
     setTracksPlaylist: () => { },
@@ -102,6 +107,7 @@ const SearchProvider: FC = ({ children }) => {
     const [tracksPlaylist, setTracksPlaylist] = useState<getTracksPlaylist[]>([])
     const [userPlaylists, setUserPlaylists] = useState<getUserPlaylists[]>([])
     const [searchInput, setSearchInput] = useState("")
+    const [openModal, setOpenModal] = useState(false)
 
     const artistsIds = playlists.map(({ id }) => { return id })
     const tracksIds = tracks.map(({ id }) => { return id })
@@ -221,6 +227,8 @@ const SearchProvider: FC = ({ children }) => {
             playlistDetails,
             setPlaylistDetails,
             tracksPlaylist,
+            openModal,
+            setOpenModal,
             setTracksPlaylist,
             musicTime,
             formatDate,

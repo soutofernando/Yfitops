@@ -1,5 +1,7 @@
-import React from 'react'
-import { Link, useLocation} from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { AuthContext } from '~/src/contexts/auth/AuthProvider'
+import { SearchContext } from '~/src/contexts/search/SearchProvider'
 import Icon from '../../ui/icon/Icon'
 
 const option = [
@@ -16,18 +18,22 @@ const option2 = [
 const NavigationOptions = () => {
 
     const location = useLocation()
+    const { logged } = useContext(AuthContext)
+    const { setOpenModal } = useContext(SearchContext)
 
     return (
         <div>
             <div className='pl-2 mt-6'>
                 {option.map((link) => (
                     <div key={link.name} className='mt-2'>
-                        <Link to={link.link} >
-                            <div className={location.pathname == link.link ? 'hover:text-white hover:transition-all hover:duration-300 flex items-center text-white' :
-                                "hover:text-white hover:transition-all hover:duration-300 flex items-center text-gray-white"}>
-                                <Icon d={link.icon} className="w-8 h-8 mr-2" />
-                                <span className='text-sm font-bold'>{link.name}</span>
-                            </div>
+                        <Link to={logged ? link.link : "/"} >
+                            <button onClick={() => {!logged ? setOpenModal(true) : setOpenModal(false)}}>
+                                <div className={location.pathname == link.link ? 'hover:text-white hover:transition-all hover:duration-300 flex items-center text-white' :
+                                    "hover:text-white hover:transition-all hover:duration-300 flex items-center text-gray-white"}>
+                                    <Icon d={link.icon} className="w-8 h-8 mr-2" />
+                                    <span className='text-sm font-bold'>{link.name}</span>
+                                </div>
+                            </button>
                         </Link>
                     </div>
                 ))}
@@ -36,10 +42,12 @@ const NavigationOptions = () => {
                 {option2.map((link) => (
                     <div key={link.name} className='mt-2'>
                         <Link to={link.link} >
-                            <div className='hover:text-white hover:transition-all hover:duration-300 flex items-center text-gray-white'>
-                                <Icon d={link.icon} className="w-8 h-8 mr-2" />
-                                <span className='text-sm font-bold'>{link.name}</span>
-                            </div>
+                            <button>
+                                <div className='hover:text-white hover:transition-all hover:duration-300 flex items-center text-gray-white'>
+                                    <Icon d={link.icon} className="w-8 h-8 mr-2" />
+                                    <span className='text-sm font-bold'>{link.name}</span>
+                                </div>
+                            </button>
                         </Link>
                     </div>
                 ))}

@@ -20,7 +20,7 @@ const FoundPlaylists: FC<PlaylistProps> = ({ image, name, by, id }) => {
                         <p className='text-white w-full text-xl font-bold overflow-hidden whitespace-nowrap text-ellipsis'>{name}</p>
                     </div>
                     <div className='mt-1 pb-10'>
-                        <span className='text-gray-white font-semibold'>By {by}</span>
+                        <p className='text-gray-white font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>By {by}</p>
                     </div>
                 </div>
             </Link>

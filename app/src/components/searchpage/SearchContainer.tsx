@@ -1,25 +1,23 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '~/src/contexts/auth/AuthProvider'
-import { SearchContext } from '~/src/contexts/search/SearchProvider'
 import FooterHome from '../home/footerHome/FooterHome'
-import LoggedContainer from './LoggedContainer'
-import LoggedOutContainer from './LoggedOutContainer'
+import SearchLogged from './SearchLogged'
+import SearchLoggedOut from './SearchLoggedOut'
 
 const SearchContainer = () => {
 
-    const { searchInput } = useContext(SearchContext)
     const { logged } = useContext(AuthContext)
 
     return (
         <div className='p-8'>
             {
-                logged == true && searchInput.length > 0 ?
+                logged ?
                     <div>
-                        <LoggedContainer />
+                        <SearchLogged />
                     </div>
                     :
                     <div>
-                        <LoggedOutContainer />
+                        <SearchLoggedOut />
                     </div>
             }
             <FooterHome />

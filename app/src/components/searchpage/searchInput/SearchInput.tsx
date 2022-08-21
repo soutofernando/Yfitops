@@ -4,10 +4,12 @@ import { SearchContext } from '~/src/contexts/search/SearchProvider'
 
 const SearchInput = () => {
 
-    const { setSearchInput, searchGeneral, searchInput} = useContext(SearchContext)
+    const { setSearchInput, searchGeneral, searchInput } = useContext(SearchContext)
 
     useEffect(() => {
-        searchGeneral()
+        if (searchInput.length > 0) {
+            searchGeneral()
+        }
     }, [searchInput])
 
     return (

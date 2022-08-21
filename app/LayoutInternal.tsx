@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import LoggedOutModal from './src/components/common/loggedOutModal/LoggedOutModal'
 import IncentiveSignUp from './src/components/home/incentiveSignUp/IncentiveSignUp'
 import NavigationMenu from './src/components/home/navigationMenu/NavigationMenu'
 import NavigationSideMenu from './src/components/home/navigationSideMenu/NavigationSideMenu'
@@ -20,6 +21,7 @@ const LayoutInternal: FC = ({ children }) => {
                             <NavigationMenu />
                         </div>
                         <div className='bg-black-gray-2'>
+                            <LoggedOutModal />
                             <main>{children}</main>
                         </div>
                     </div>

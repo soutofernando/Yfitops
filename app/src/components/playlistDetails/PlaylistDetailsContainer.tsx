@@ -22,7 +22,7 @@ const PlaylistDetailsContainer = () => {
             <div className='p-8 bg-gradient-to-b from-black to-gray-black opacity-90 relative bottom-24'>
                 <HeaderPlaylistTracks />
                 {tracksPlaylist.map((track) => (
-                    <div>
+                    <div key={track.track.id}>
                         <PlaylistTrack name={track.track.name}
                             artist={track.track.artists[0]?.name}
                             added_at={track.added_at}

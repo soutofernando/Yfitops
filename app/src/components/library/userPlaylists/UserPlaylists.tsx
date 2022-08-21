@@ -1,3 +1,4 @@
+import { Link } from '@remix-run/react'
 import React, { FC, useContext } from 'react'
 import { SearchContext } from '~/src/contexts/search/SearchProvider'
 
@@ -12,7 +13,7 @@ id: string
 const UserPlaylists: FC<userPlaylistsProps> = ({ name, by, image, id }) => {
 
     return (
-        <a href={`/playlist/${id}`}>
+        <Link to={`/playlist/${id}`}>
             <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64'>
                 <div>
                     <img src={image} className="rounded-md h-36 " />
@@ -24,7 +25,7 @@ const UserPlaylists: FC<userPlaylistsProps> = ({ name, by, image, id }) => {
                     <span className='text-gray-white font-semibold'>By {by}</span>
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 

@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import { SearchContext } from '~/src/contexts/search/SearchProvider'
-import FoundAlbums from './foundAlbums/FoundAlbums'
-import FountArtists from './foundArtists/FountArtists'
-import FoundPlaylists from './foundPlaylists/FoundPlaylists'
-import TopResults from './topResults/TopResults'
-import PlaylistSongs from './playlistSong/PlaylistSong'
+import FoundAlbums from '../foundAlbums/FoundAlbums'
+import FountArtists from '../foundArtists/FoundArtists'
+import FoundPlaylists from '../foundPlaylists/FoundPlaylists'
+import PlaylistSong from '../playlistSong/PlaylistSong'
+import TopResults from '../topResults/TopResults'
 
-const LoggedContainer = () => {
 
-    const { artists, playlists, tracks, albums } = useContext(SearchContext)
+const SearchUser = () => {
+
+    const { artists, playlists, tracks, albums, searchInput} = useContext(SearchContext)
     const filteredSongs = tracks.filter((song) => { return tracks.indexOf(song) < 4 })
     const filteredArtists = artists.filter((artist) => { return artists.indexOf(artist) < 6 })
     const filteredAlbums = albums.filter((album) => { return albums.indexOf(album) < 6 })
@@ -39,7 +40,7 @@ const LoggedContainer = () => {
                         {
                             filteredSongs.map((song) => (
                                 <div className='w-full ml-5 mt-1' key={song.id}>
-                                    <PlaylistSongs image={song.album.images[0]?.url} song={song.name} artist={song.artists[0].name} duration_ms={song.duration_ms} />
+                                    <PlaylistSong image={song.album.images[0]?.url} song={song.name} artist={song.artists[0].name} duration_ms={song.duration_ms} />
                                 </div>
                             ))
                         }
@@ -90,4 +91,4 @@ const LoggedContainer = () => {
     )
 }
 
-export default LoggedContainer
+export default SearchUser

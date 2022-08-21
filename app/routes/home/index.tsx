@@ -20,14 +20,15 @@ export const loader: LoaderFunction = async () => {
 
 const index = () => {
     const { variables } = useLoaderData<variablesAmbient>()
-    const { getToken, setVariables } = useContext(AuthContext)
-    const { searchRecommendations } = useContext(SearchContext)
+    const { getToken, setVariables, logged } = useContext(AuthContext)
+    const { searchRecommendations, searchUserPlaylist } = useContext(SearchContext)
 
     useEffect(() => {
         getToken()
         searchRecommendations()
+        searchUserPlaylist()
         setVariables(variables)
-    }, [])
+    }, [logged])
 
     return (
         <div>

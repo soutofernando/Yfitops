@@ -2,7 +2,7 @@ import React, { createContext, FC, useEffect, useState } from 'react'
 import { variablesAmbient } from '~/src/features/types/ApiTypes'
 
 interface AuthProps {
-    token: string
+    token: string | null
     setToken(e: string): void
     getToken(): void
     logged: boolean
@@ -13,6 +13,7 @@ interface AuthProps {
         "AUTH_ENDPOINT": string,
     },
     setVariables(variables: any): void
+    checkLogged(): void
 }
 
 export const AuthContext = createContext<AuthProps>({
@@ -27,11 +28,12 @@ export const AuthContext = createContext<AuthProps>({
         "AUTH_ENDPOINT": "",
     },
     setVariables: () => { },
+    checkLogged: () => { },
 })
 
 const AuthProvider: FC = ({ children }) => {
 
-    const [token, setToken] = useState("")
+    const [token, setToken] = useState<string | null>("")
     const [logged, setLogged] = useState(false)
     const [variables, setVariables] = useState({
         "CLIENT_ID": "",
@@ -42,12 +44,22 @@ const AuthProvider: FC = ({ children }) => {
     const getToken = () => {
         let urlParams = new URLSearchParams(window.location.hash.replace("#", "?"));
         let token = urlParams.get('access_token');
+        setToken(token)
+
         if (token != null) {
-            setToken(token)
             localStorage.setItem("accessToken", token)
         }
 
-        setLogged(true)
+        if (token) {
+            if (token.length > 10) {
+                setLogged(true)
+            }
+        }
+    }
+    const checkLogged = () => {
+        if (localStorage.getItem("accessToken")) {
+            setToken(localStorage.getItem("accessToken"))
+        }
     }
 
     return (
@@ -59,6 +71,7 @@ const AuthProvider: FC = ({ children }) => {
             setLogged,
             variables,
             setVariables,
+            checkLogged,
         }}>
             {children}
         </AuthContext.Provider>

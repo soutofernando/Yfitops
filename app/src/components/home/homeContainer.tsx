@@ -1,4 +1,5 @@
 import React from 'react'
+import LoggedOutModal from '../common/loggedOutModal/LoggedOutModal'
 import AlbumSuggestionContainer from './albumSuggestion/AlbumSuggestionContainer'
 import ArtistsSuggestionContainer from './artistsSuggestions/ArtistsSuggestionContainer'
 import FooterHome from './footerHome/FooterHome'
