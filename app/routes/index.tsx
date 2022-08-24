@@ -1,5 +1,4 @@
 import { LoaderFunction, redirect } from "@remix-run/node";
-import HomeContainer from "~/src/components/home/homeContainer";
 
 const logado = true
 

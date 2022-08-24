@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '~/src/contexts/auth/AuthProvider'
 import Logo from '../../ui/logo/Logo'
 import NavigationOptions from './NavigationOptions'
+import SuggestionsPlaylistsUser from './suggestionsPlaylistsUser/SuggestionsPlaylistsUser'
 
 
 const NavigationSideMenu = () => {
+
+    const { logged } = useContext(AuthContext)
 
     return (
         <div className='bg-black p-4 pr-16 h-full'>
@@ -22,7 +26,14 @@ const NavigationSideMenu = () => {
             <div>
                 <NavigationOptions />
             </div>
-            <div className='text-gray-white text-xs pt-72'>
+            {logged ?
+                <div>
+                    <hr className='opacity-20 mt-4'/>
+                    <div className='mt-4'>
+                        <SuggestionsPlaylistsUser />
+                    </div>
+                </div> : <div />}
+            <div className={logged ? 'text-gray-white text-xs pt-16' :'text-gray-white text-xs pt-72'}>
                 <div>
                     <Link to="/">
                         <span className='hover:underline'>Cookies</span>

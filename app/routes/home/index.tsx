@@ -1,7 +1,7 @@
 import { LoaderFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import React, { useContext, useEffect } from 'react'
-import HomeContainer from '~/src/components/home/homeContainer'
+import HomeContainer from '~/src/components/home/HomeContainer'
 import { AuthContext } from '~/src/contexts/auth/AuthProvider'
 import { SearchContext } from '~/src/contexts/search/SearchProvider'
 import { variablesAmbient } from '~/src/features/types/ApiTypes'

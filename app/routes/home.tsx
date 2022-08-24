@@ -1,4 +1,3 @@
-import { LoaderFunction } from '@remix-run/node'
 import { Outlet, useLoaderData } from '@remix-run/react'
 import React from 'react'
 import LayoutInternal from '~/LayoutInternal'

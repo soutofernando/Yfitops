@@ -47,13 +47,13 @@ const LoggedOutModal = () => {
                                                 <Dialog.Title as="h3" className="text-lg leading-6 font-medium">
                                                     Plase login
                                                 </Dialog.Title>
-                                                <div className="mt-2">
-                                                    <p className="text-sm sm:pr-20">
+                                                <div className="mt-2  sm:pr-20">
+                                                    <p className="text-sm w-full">
                                                         You need login to acess
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div className='text-center sm:pl-32 pl-10'>
+                                            <div className='text-center sm:pl-28 pl-10'>
                                                 <Logo />
                                             </div>
                                         </div>

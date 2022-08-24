@@ -25,7 +25,7 @@ const AlbumSuggestion: FC<Props> = ({ name, date, image, time }) => {
           </span>
           <div>•</div>
           <p className='ml-1 overflow-hidden whitespace-nowrap text-ellipsis'>
-            {(time / 60000).toFixed(0) } Min
+            {(time / 60000).toFixed(0)} Min
           </p>
         </div>
       </div>
