@@ -1,9 +1,12 @@
-export interface getArtistsProps {
+interface getGlobal{
     external_urls: { spotify: string }
+    name: string
+    id: string
+}
+
+export interface getArtistsProps extends getGlobal {
     followers: { href: string, total: number }
     genres: string[]
-    id: string
-    name: string
     images: [{ heigth: number, url: string, width: number }]
     href: string
     popularity: string
@@ -11,12 +14,9 @@ export interface getArtistsProps {
     uri: string
 }
 
-export interface getPlaylistsProps {
-    external_urls: { spotify: string }
+export interface getPlaylistsProps extends getGlobal{
     description: string
-    id: string
     images: [{ heigth: number, url: string, width: number }]
-    name: string
     owner: { display_name: string, id: string, href: string }
     tracks: { total: number }
     type: string
@@ -24,41 +24,32 @@ export interface getPlaylistsProps {
 
 }
 
-export interface getAlbumsProps {
-    external_urls: { spotify: string }
+export interface getAlbumsProps extends getGlobal {
     artists: [{ id: string, name: string }]
     images: [{ heigth: number, url: string, width: number }]
-    name: string
     release_date: string
     total_tracks: number
-    id: string
 }
 
-export interface getTracksProps {
-    external_urls: { spotify: string }
-    name: string
+export interface getTracksProps extends getGlobal {
     album: { images: [{ heigth: number, url: string, width: number }] }
     artists: [{ name: string }]
-    id: string
     duration_ms: number
 }
 
-export interface getUserPlaylists {
-    id: string
+export interface getUserPlaylists extends getGlobal {
     description: string
-    external_urls: { spotify: string }
     href: string
     images: [
         { height: number, url: string, width: number }
     ]
-    name: string
     public: boolean
     tracks: { href: string, total: number }
     owner: { display_name: string }
 
 }
 
-export interface getCategories {
+export interface getCategories{
     name: string
     id: string
     href: string
@@ -76,6 +67,15 @@ export interface getPlaylistDetails {
     type: string
     images: [{ url: string }]
 }
+
+export interface getArtistDetails {
+    external_urls: { spotify: string }
+    name: string
+    followers: { total: number }
+    type: string
+    images: [{ url: string }]
+}
+
 
 export interface getTracksPlaylist {
     added_at: string

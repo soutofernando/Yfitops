@@ -2,7 +2,7 @@ import React, { createContext, FC, useContext, useState } from 'react'
 import { AuthContext } from '../auth/AuthProvider'
 import axios from 'axios'
 import { END_POINT_CATEGORIES, END_POINT_GENERAL_SEARCH, END_POINT_RECOMMENDATIONS, END_POINT_USER_PLAYLIST } from '~/src/features/constants/ConstantsApi'
-import { getAlbumsProps, getArtistsProps, getCategories, getPlaylistDetails, getPlaylistsProps, getTracksPlaylist, getTracksProps, getUserPlaylists } from '~/src/features/types/ApiTypes'
+import { getAlbumsProps, getArtistDetails, getArtistsProps, getCategories, getPlaylistDetails, getPlaylistsProps, getTracksPlaylist, getTracksProps, getUserPlaylists } from '~/src/features/types/ApiTypes'
 
 interface SearchProps {
     artists: getArtistsProps[]
@@ -18,7 +18,7 @@ interface SearchProps {
     categories: getCategories[]
     setCategories(array: getCategories[]): void
     playlistDetails: getPlaylistDetails
-    setPlaylistDetails(array: getPlaylistDetails): void
+    setPlaylistDetails(obj: getPlaylistDetails): void
     tracksPlaylist: getTracksPlaylist[]
     setTracksPlaylist(array: getTracksPlaylist[]): void
     userPlaylists: getUserPlaylists[]
@@ -27,12 +27,15 @@ interface SearchProps {
     setSearchInput(artist: string): void
     openModal: boolean
     setOpenModal(open: boolean): void
+    artistDetails: getArtistDetails
+    setArtistDetails(obj: getArtistDetails): void
 
     searchUserPlaylist(): void
     searchGeneral(): void
     searchRecommendations(): void
     searchCategories(): void
     getPlaylistDetails(id: string): void
+    getArtistDetails(id: string): void
     musicTime(time: number): string
     formatDate(date: string): string
 
@@ -62,6 +65,7 @@ export const SearchContext = createContext<SearchProps>({
     setCategories: () => { },
     searchCategories: () => { },
     getPlaylistDetails: (id: string) => { },
+    getArtistDetails: (id: string) => { },
     playlistDetails: {
         description: "",
         name: "",
@@ -73,9 +77,17 @@ export const SearchContext = createContext<SearchProps>({
         type: "",
         images: [{ url: "" }],
     },
+    setPlaylistDetails: () => { },
+    artistDetails: {
+        name: "",
+        external_urls: { spotify: "" },
+        followers: { total: 0 },
+        type: "",
+        images: [{ url: "" }]
+    },
+    setArtistDetails: () => { },
     openModal: false,
     setOpenModal: () => { },
-    setPlaylistDetails: () => { },
     tracksPlaylist: [],
     setTracksPlaylist: () => { },
     musicTime: (time: number) => "",
@@ -103,6 +115,13 @@ const SearchProvider: FC = ({ children }) => {
         tracks: { total: 0 },
         type: "",
         images: [{ url: "" }],
+    })
+    const [artistDetails, setArtistDetails] = useState<getArtistDetails>({
+        name: "",
+        external_urls: { spotify: "" },
+        followers: { total: 0 },
+        type: "",
+        images: [{ url: "" }]
     })
     const [tracksPlaylist, setTracksPlaylist] = useState<getTracksPlaylist[]>([])
     const [userPlaylists, setUserPlaylists] = useState<getUserPlaylists[]>([])
@@ -178,6 +197,28 @@ const SearchProvider: FC = ({ children }) => {
         setTracksPlaylist(data.tracks.items)
     }
 
+    const getArtistDetails = async (id: string) => {
+
+        const { data } = await axios.get(`https://api.spotify.com/v1/artists/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        setArtistDetails(data)
+    }
+
+    const getAlbumDetails = async (id: string) => {
+
+        const { data } = await axios.get(`https://api.spotify.com/v1/albums/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+
+    }
+
     const musicTime = (time: number) => {
         const minutes = (time / 60000).toFixed(2)
         const decimal = minutes.substring(2)
@@ -224,8 +265,11 @@ const SearchProvider: FC = ({ children }) => {
             setCategories,
             searchCategories,
             getPlaylistDetails,
+            getArtistDetails,
             playlistDetails,
             setPlaylistDetails,
+            artistDetails,
+            setArtistDetails,
             tracksPlaylist,
             openModal,
             setOpenModal,

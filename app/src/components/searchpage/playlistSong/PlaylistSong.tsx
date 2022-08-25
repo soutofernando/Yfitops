@@ -24,9 +24,7 @@ const PlaylistSong: FC<Props> = ({ duration_ms, image, song, artist }) => {
                         <span className='text-white font-semibold'>{song}</span>
                     </div>
                     <div>
-                        <Link to="/home/search" className='hover:underline hover:text-white'>
-                            <span className='font-medium'>{artist}</span>
-                        </Link>
+                        <span className='font-medium'>{artist}</span>
                     </div>
                 </div>
             </div>

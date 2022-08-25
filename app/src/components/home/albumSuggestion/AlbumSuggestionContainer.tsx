@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { SearchContext } from '~/src/contexts/search/SearchProvider'
 import { getRecommendations } from '~/src/features/types/ApiTypes'
+import HomeLoggedOut from '../HomeLoggedOut'
 import SpotifyPlaylists from '../homeLoggedOut/SpotifyPlaylists'
 import AlbumSuggestion from './AlbumSuggsetion'
 
@@ -12,7 +13,7 @@ const AlbumSuggestionContainer = () => {
 
     return (
         <div className='text-white py-5'>
-            {searchInput.length > 0?
+            {searchInput.length > 0 ?
                 <div>
                     <div className='px-6'>
                         <Link className='hover:underline' to="/">
@@ -29,7 +30,7 @@ const AlbumSuggestionContainer = () => {
                             ))}
                         </div>
                     </div>
-                </div> : <SpotifyPlaylists />}
+                </div> : <HomeLoggedOut />}
 
         </div>
     )
