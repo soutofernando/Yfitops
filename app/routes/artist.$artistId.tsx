@@ -11,14 +11,17 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 const artist = () => {
     const { artistId } = useLoaderData()
-    const { getArtistDetails } = useContext(SearchContext)
+    const { getArtistDetails, getArtistTopTracks, artistAlbums, getArtistAlbums } = useContext(SearchContext)
 
     useEffect(() => {
         getArtistDetails(artistId)
+        getArtistTopTracks(artistId)
+        getArtistAlbums(artistId)
     }, [])
 
     return (
         <div>
+            {console.log(artistAlbums)}
             <LayoutInternal>
                 <ArtistContainer />
             </LayoutInternal>

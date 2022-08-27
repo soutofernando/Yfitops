@@ -1,4 +1,4 @@
-interface getGlobal{
+interface getGlobal {
     external_urls: { spotify: string }
     name: string
     id: string
@@ -14,7 +14,7 @@ export interface getArtistsProps extends getGlobal {
     uri: string
 }
 
-export interface getPlaylistsProps extends getGlobal{
+export interface getPlaylistsProps extends getGlobal {
     description: string
     images: [{ heigth: number, url: string, width: number }]
     owner: { display_name: string, id: string, href: string }
@@ -49,7 +49,7 @@ export interface getUserPlaylists extends getGlobal {
 
 }
 
-export interface getCategories{
+export interface getCategories {
     name: string
     id: string
     href: string
@@ -96,6 +96,15 @@ export interface getTracksPlaylist {
     }
 }
 
+export interface getArtistsTopsTracks extends getGlobal {
+    duration_ms: number
+    album: {
+        images: [{ url: string }]
+        release_date: string
+        name: string
+    }
+}
+
 export interface getRecommendations {
     album: {
         name: string
@@ -111,6 +120,12 @@ export interface getRecommendations {
     }]
     duration_ms: number
     id: string
+}
+
+export interface getArtistAlbums extends getGlobal {
+    images: [{ url: string }]
+    release_date: string
+    type: string
 }
 
 export interface variablesAmbient {

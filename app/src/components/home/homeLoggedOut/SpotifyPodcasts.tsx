@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const SPOTIFY_PLAYLISTS = [
+const SPOTIFY_PODCASTS = [
     {
         id: 1,
         name: "Today's podcast",
@@ -34,9 +34,9 @@ const SPOTIFY_PLAYLISTS = [
     },
     {
         id: 6,
-        name: "Today's Top Hits Brazil",
-        img: "https://ifolha.com.br/wp-content/uploads/2022/02/MUSICA-WS-On-Board-01-02-22.jpg",
-        description: "Ws in Top Brazil hits"
+        name: "Lisen anywhare",
+        img: "https://hospedario.com.br/wp-content/uploads/2020/08/Melhores-Podcasts-no-Spotify-Brasileiros.jpg",
+        description: "Lisen while in the shower"
     }
 ]
 
@@ -49,16 +49,16 @@ const SpotifyPodcasts = () => {
                 </Link>
             </div>
             <div className='flex'>
-                {SPOTIFY_PLAYLISTS.map((playlist) => (
-                    <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64 ml-4' >
+                {SPOTIFY_PODCASTS.map((podcast) => (
+                    <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64 ml-4' key={podcast.id} >
                         <div>
-                            <img src={playlist.img} className="rounded-md h-36 " />
+                            <img src={podcast.img} className="rounded-md h-36 " />
                         </div>
                         <div className='mt-4'>
-                            <p className='text-white w-full text-lg font-bold overflow-hidden whitespace-nowrap text-ellipsis'>{playlist.name}</p>
+                            <p className='text-white w-full text-lg font-bold overflow-hidden whitespace-nowrap text-ellipsis'>{podcast.name}</p>
                         </div>
                         <div className='mt-1 pb-10'>
-                            <p className='text-gray-white font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>{playlist.description}</p>
+                            <p className='text-gray-white font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>{podcast.description}</p>
                         </div>
                     </div>
                 ))}

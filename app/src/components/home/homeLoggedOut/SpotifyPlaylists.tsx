@@ -50,7 +50,7 @@ const SpotifyPlaylists = () => {
             </div>
             <div className='flex'>
                 {SPOTIFY_PLAYLISTS.map((playlist) => (
-                    <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64 ml-4' >
+                    <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64 ml-4' key={playlist.id}>
                         <div>
                             <img src={playlist.img} className="rounded-md h-36 " />
                         </div>

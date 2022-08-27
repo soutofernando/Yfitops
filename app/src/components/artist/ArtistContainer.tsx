@@ -1,4 +1,6 @@
 import React from 'react'
+import FooterHome from '../home/footerHome/FooterHome'
+import ArtistTracksContainer from './artistTracks/ArtistTracksContainer'
 import HeroArtist from './heroArtist/HeroArtist'
 
 const ArtistContainer = () => {
@@ -6,6 +8,8 @@ const ArtistContainer = () => {
         <div>
             <div>
                 <HeroArtist />
+                <ArtistTracksContainer />
+                <FooterHome />
             </div>
         </div>
     )

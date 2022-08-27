@@ -2,7 +2,7 @@ import React, { createContext, FC, useContext, useState } from 'react'
 import { AuthContext } from '../auth/AuthProvider'
 import axios from 'axios'
 import { END_POINT_CATEGORIES, END_POINT_GENERAL_SEARCH, END_POINT_RECOMMENDATIONS, END_POINT_USER_PLAYLIST } from '~/src/features/constants/ConstantsApi'
-import { getAlbumsProps, getArtistDetails, getArtistsProps, getCategories, getPlaylistDetails, getPlaylistsProps, getTracksPlaylist, getTracksProps, getUserPlaylists } from '~/src/features/types/ApiTypes'
+import { getAlbumsProps, getArtistAlbums, getArtistDetails, getArtistsProps, getArtistsTopsTracks, getCategories, getPlaylistDetails, getPlaylistsProps, getTracksPlaylist, getTracksProps, getUserPlaylists } from '~/src/features/types/ApiTypes'
 
 interface SearchProps {
     artists: getArtistsProps[]
@@ -29,6 +29,10 @@ interface SearchProps {
     setOpenModal(open: boolean): void
     artistDetails: getArtistDetails
     setArtistDetails(obj: getArtistDetails): void
+    artistTopTracks: getArtistsTopsTracks[]
+    setArtistTopTracks(obj: getArtistsTopsTracks[]): void
+    artistAlbums: getArtistAlbums[]
+    setArtistAlbums(array: getArtistAlbums[]): void
 
     searchUserPlaylist(): void
     searchGeneral(): void
@@ -36,6 +40,8 @@ interface SearchProps {
     searchCategories(): void
     getPlaylistDetails(id: string): void
     getArtistDetails(id: string): void
+    getArtistTopTracks(id: string): void
+    getArtistAlbums(id: string): void
     musicTime(time: number): string
     formatDate(date: string): string
 
@@ -66,6 +72,12 @@ export const SearchContext = createContext<SearchProps>({
     searchCategories: () => { },
     getPlaylistDetails: (id: string) => { },
     getArtistDetails: (id: string) => { },
+    getArtistTopTracks: (id: string) => { },
+    getArtistAlbums: (id: string) => { },
+    artistTopTracks: [],
+    setArtistTopTracks: () => { },
+    artistAlbums: [],
+    setArtistAlbums: () => { },
     playlistDetails: {
         description: "",
         name: "",
@@ -116,6 +128,8 @@ const SearchProvider: FC = ({ children }) => {
         type: "",
         images: [{ url: "" }],
     })
+    const [artistTopTracks, setArtistTopTracks] = useState<getArtistsTopsTracks[]>([])
+    const [artistAlbums, setArtistAlbums] = useState<getArtistAlbums[]>([])
     const [artistDetails, setArtistDetails] = useState<getArtistDetails>({
         name: "",
         external_urls: { spotify: "" },
@@ -208,6 +222,30 @@ const SearchProvider: FC = ({ children }) => {
         setArtistDetails(data)
     }
 
+    const getArtistTopTracks = async (id: string) => {
+        const { data } = await axios.get(`https://api.spotify.com/v1/artists/${id}/top-tracks`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }, params: {
+                market: "BR"
+            }
+        })
+
+        setArtistTopTracks(data.tracks)
+    }
+
+    const getArtistAlbums = async (id: string) => {
+        const { data } = await axios.get(`https://api.spotify.com/v1/artists/${id}/albums`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }, params: {
+                market: "BR"
+            }
+        })
+
+        setArtistAlbums(data.items)
+    }
+
     const getAlbumDetails = async (id: string) => {
 
         const { data } = await axios.get(`https://api.spotify.com/v1/albums/${id}`, {
@@ -266,11 +304,17 @@ const SearchProvider: FC = ({ children }) => {
             searchCategories,
             getPlaylistDetails,
             getArtistDetails,
+            getArtistAlbums,
+            getArtistTopTracks,
+            artistAlbums,
+            setArtistAlbums,
             playlistDetails,
             setPlaylistDetails,
             artistDetails,
             setArtistDetails,
             tracksPlaylist,
+            artistTopTracks,
+            setArtistTopTracks,
             openModal,
             setOpenModal,
             setTracksPlaylist,
