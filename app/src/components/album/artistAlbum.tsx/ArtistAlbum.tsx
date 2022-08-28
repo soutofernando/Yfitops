@@ -1,15 +1,14 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-interface AlbumProps {
-    image: string | undefined
+interface ArtistAlbumProps {
+    image: string
+    id: string
     name: string
     release: string
-    artist: string
-    id: string
 }
 
-const FoundAlbums: FC<AlbumProps> = ({ image, name, release, artist, id }) => {
+const ArtistAlbum: FC<ArtistAlbumProps> = ({ id, image, release, name }) => {
     return (
         <Link to={`/album/${id}`}>
             <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64'>
@@ -24,10 +23,6 @@ const FoundAlbums: FC<AlbumProps> = ({ image, name, release, artist, id }) => {
                         <span className='mr-1'>
                             {release.substring(0, 4)}
                         </span>
-                        <div>•</div>
-                        <p className='ml-1 overflow-hidden whitespace-nowrap text-ellipsis'>
-                            {artist}
-                        </p>
                     </div>
                 </div>
             </div>
@@ -35,4 +30,4 @@ const FoundAlbums: FC<AlbumProps> = ({ image, name, release, artist, id }) => {
     )
 }
 
-export default FoundAlbums
+export default ArtistAlbum

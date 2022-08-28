@@ -73,7 +73,7 @@ const SearchUser = () => {
 
                     {filteredAlbums.map((album) => (
                         <div key={album.id}>
-                            <FoundAlbums image={album.images[0]?.url} name={album.name} release={album.release_date} artist={album.artists[0]?.name} />
+                            <FoundAlbums image={album.images[0]?.url} name={album.name} release={album.release_date} artist={album.artists[0]?.name} id={album.id} />
                         </div>
                     ))}
                 </div>

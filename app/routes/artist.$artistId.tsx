@@ -21,7 +21,6 @@ const artist = () => {
 
     return (
         <div>
-            {console.log(artistAlbums)}
             <LayoutInternal>
                 <ArtistContainer />
             </LayoutInternal>

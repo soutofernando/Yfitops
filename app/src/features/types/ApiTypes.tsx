@@ -128,6 +128,32 @@ export interface getArtistAlbums extends getGlobal {
     type: string
 }
 
+export interface getAlbumDetails extends getGlobal {
+    album_type: string
+    release_date: string
+    total_tracks: number
+    images: [{ url: string }]
+    artists: [
+        { name: string }
+    ]
+    duration_ms: number
+    tracks: {
+        items: [
+            getAlbumTracks
+        ]
+    }
+}
+
+export interface getAlbumTracks extends getGlobal {
+    artists: [
+        { name: string }
+    ]
+    duration_ms: number
+    disc_number: number
+}
+
+
+
 export interface variablesAmbient {
     variables: {
         CLIENT_ID: string

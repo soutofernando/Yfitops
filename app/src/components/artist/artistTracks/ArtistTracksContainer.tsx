@@ -1,4 +1,5 @@
-import { DotsHorizontalIcon, PlayIcon } from '@heroicons/react/outline'
+import { DotsHorizontalIcon } from '@heroicons/react/outline'
+import { PlayIcon } from '@heroicons/react/solid'
 import React, { useContext } from 'react'
 import { SearchContext } from '~/src/contexts/search/SearchProvider'
 import PlaylistTrack from '../../playlistDetails/PlaylistTrack'
