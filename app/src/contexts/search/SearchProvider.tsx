@@ -115,7 +115,7 @@ export const SearchContext = createContext<SearchProps>({
         total_tracks: 0,
         images: [{ url: "" }],
         artists: [
-            { name: "" }
+            { name: "", id:"" }
         ],
         name: "",
         external_urls: { spotify: "" },
@@ -185,7 +185,7 @@ const SearchProvider: FC = ({ children }) => {
         total_tracks: 0,
         images: [{ url: "" }],
         artists: [
-            { name: "" }
+            { name: "", id : "" }
         ],
         name: "",
         external_urls: { spotify: "" },

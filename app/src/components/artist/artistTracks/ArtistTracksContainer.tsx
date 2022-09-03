@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 import { SearchContext } from '~/src/contexts/search/SearchProvider'
 import PlaylistTrack from '../../playlistDetails/PlaylistTrack'
 import ArtistAlbums from '../artistAlbums/ArtistAlbums'
+import ArtistTracksButtons from './artistTracks/ArtistTracksButtons'
 
 const ArtistTracksContainer = () => {
 
@@ -12,24 +13,8 @@ const ArtistTracksContainer = () => {
 
     return (
         <div className="">
-            <div className='flex items-center p-4'>
-                <div>
-                    <button >
-                        <PlayIcon className='w-16 h-16 text-green-500 hover:p-1' />
-                    </button>
-                </div>
-                <div className='ml-4'>
-                    <button className='text-white border border-gray-white hover:border-white hover:transition-all rounded-md px-4 py-1 font-bold'>
-                        FOLLOW
-                    </button>
-                </div>
-                <div className='ml-6'>
-                    <button>
-                        <DotsHorizontalIcon className='w-8 h-8 text-gray-white hover:text-white transition-all' />
-                    </button>
-                </div>
-            </div>
-            <div className='p-4'>
+            <div className='p-4 bg-gradient-to-b from-black to-gray-black-2 opacity-90'>
+                <ArtistTracksButtons />
                 <div>
                     <span className='font-bold text-2xl text-white'>
                         Popular

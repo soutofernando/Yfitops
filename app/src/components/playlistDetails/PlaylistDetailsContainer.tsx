@@ -19,7 +19,7 @@ const PlaylistDetailsContainer = () => {
                 <HeroPlaylist />
             </div>
 
-            <div className='p-8 bg-gradient-to-b from-black to-gray-black opacity-90 relative bottom-24'>
+            <div className='p-8 bg-gradient-to-b from-black to-gray-black-2 opacity-90 relative bottom-24'>
                 <HeaderPlaylistTracks />
                 {tracksPlaylist.map((track) => (
                     <div key={track.track.id}>

@@ -20,7 +20,7 @@ export const loader: LoaderFunction = async () => {
 
 const index = () => {
     const { variables } = useLoaderData<variablesAmbient>()
-    const { getToken, setVariables, logged } = useContext(AuthContext)
+    const { getToken, setVariables, logged, token, checkLogged} = useContext(AuthContext)
     const { searchRecommendations, searchUserPlaylist } = useContext(SearchContext)
 
     useEffect(() => {
@@ -28,10 +28,13 @@ const index = () => {
         searchRecommendations()
         searchUserPlaylist()
         setVariables(variables)
+        checkLogged()
     }, [logged])
 
     return (
         <div>
+            {console.log(token)}
+            {console.log("logged:"+ " " + logged)}
             <HomeContainer />
         </div>
     )

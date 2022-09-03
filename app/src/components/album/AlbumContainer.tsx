@@ -12,6 +12,7 @@ const AlbumContainer = () => {
 
     return (
         <div>
+            {console.log(albumDetails)}
             <HeroAlbum
                 image={albumDetails.images[0]?.url}
                 name={albumDetails.name}
@@ -21,7 +22,7 @@ const AlbumContainer = () => {
                 release_date={albumDetails.release_date}
             />
 
-            <div className='p-8 bg-gradient-to-b from-black to-gray-black opacity-90 relative bottom-24'>
+            <div className='p-8 bg-gradient-to-b from-black to-gray-black-2 opacity-90 relative bottom-24'>
                 <HeaderAlbumTracks />
                 {albumTracks.map((track) => (
                     <div key={track.id}>
@@ -34,9 +35,7 @@ const AlbumContainer = () => {
                     </div>
                 ))}
             </div>
-            <div>
-                <MoreAlbums />
-            </div>
+           
             <FooterHome />
         </div>
     )

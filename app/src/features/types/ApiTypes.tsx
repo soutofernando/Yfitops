@@ -118,6 +118,7 @@ export interface getRecommendations {
         name: string
 
     }]
+    external_urls: { spotify: string }
     duration_ms: number
     id: string
 }
@@ -134,7 +135,7 @@ export interface getAlbumDetails extends getGlobal {
     total_tracks: number
     images: [{ url: string }]
     artists: [
-        { name: string }
+        { name: string, id: string }
     ]
     duration_ms: number
     tracks: {

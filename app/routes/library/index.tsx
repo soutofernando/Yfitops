@@ -17,6 +17,11 @@ export const loader: LoaderFunction = async () => {
 
 const index = () => {
   const { variables } = useLoaderData()
+  const { setVariables } = useContext(AuthContext)
+
+  useEffect(() => {
+    setVariables(variables)
+  }, [])
 
   return (
     <div>

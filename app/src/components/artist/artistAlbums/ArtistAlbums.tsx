@@ -16,7 +16,7 @@ const ArtistAlbums = () => {
                 {
                     artistAlbumsfiltered.map((album) => (
                         <div key={album.id} className="ml-4">
-                            <ArtistAlbum name={album.name} image={album.images[0]?.url} release={album.release_date} type={album.type} />
+                            <ArtistAlbum name={album.name} image={album.images[0]?.url} release={album.release_date} type={album.type} id={album.id} />
                         </div>
                     ))
                 }

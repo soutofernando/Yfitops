@@ -41,6 +41,7 @@ const AuthProvider: FC = ({ children }) => {
         "AUTH_ENDPOINT": "",
     })
 
+
     const getToken = () => {
         let urlParams = new URLSearchParams(window.location.hash.replace("#", "?"));
         let token = urlParams.get('access_token');
@@ -56,6 +57,7 @@ const AuthProvider: FC = ({ children }) => {
             }
         }
     }
+    
     const checkLogged = () => {
         if (localStorage.getItem("accessToken")) {
             setToken(localStorage.getItem("accessToken"))

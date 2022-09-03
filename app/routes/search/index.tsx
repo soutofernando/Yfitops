@@ -1,4 +1,4 @@
-import { LoaderFunction } from '@remix-run/node'
+import { LoaderFunction, redirect } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import React, { useContext, useEffect } from 'react'
 import SearchContainer from '~/src/components/searchpage/SearchContainer'
@@ -6,6 +6,7 @@ import { AuthContext } from '~/src/contexts/auth/AuthProvider'
 import { SearchContext } from '~/src/contexts/search/SearchProvider'
 
 export const loader: LoaderFunction = async () => {
+    
     return {
         variables: {
             "CLIENT_ID": process.env.CLIENT_ID,
@@ -27,6 +28,7 @@ const index = () => {
 
     return (
         <div>
+            {console.log("search:" +logged)}
             <SearchContainer />
         </div>
     )
