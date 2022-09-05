@@ -9,7 +9,7 @@ const SearchContainer = () => {
     const { logged } = useContext(AuthContext)
 
     return (
-        <div className='p-8'>
+        <div className='lg:p-8 md:p-4 p-2'>
             {
                 logged ?
                     <div>

@@ -6,7 +6,7 @@ import SpotifyPodcasts from './homeLoggedOut/SpotifyPodcasts'
 
 const HomeLoggedOut = () => {
     return (
-        <div className='p-4'>
+        <div className='md:p-8 p-4'>
             <div>
                 <SpotifyPlaylists />
             </div>

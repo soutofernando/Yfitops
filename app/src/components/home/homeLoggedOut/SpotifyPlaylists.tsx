@@ -42,17 +42,17 @@ const SPOTIFY_PLAYLISTS = [
 
 const SpotifyPlaylists = () => {
     return (
-        <div>
+        <div >
             <div className='mb-4'>
                 <Link to="/" className='hover:underline text-white'>
                     <span className='text-white font-bold text-xl'>Spotify Playlists</span>
                 </Link>
             </div>
-            <div className='flex'>
+            <div className="grid grid-cols-1 gap-y-6 gap-x-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xl:gap-x-6">
                 {SPOTIFY_PLAYLISTS.map((playlist) => (
-                    <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64 ml-4' key={playlist.id}>
+                    <div className='hover:transition-all p-4 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-full h-72' key={playlist.id}>
                         <div>
-                            <img src={playlist.img} className="rounded-md h-36 " />
+                            <img src={playlist.img} className="rounded-md h-40 w-full" />
                         </div>
                         <div className='mt-4'>
                             <p className='text-white w-full text-lg font-bold overflow-hidden whitespace-nowrap text-ellipsis'>{playlist.name}</p>

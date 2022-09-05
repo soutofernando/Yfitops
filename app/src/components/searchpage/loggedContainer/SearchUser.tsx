@@ -20,12 +20,12 @@ const SearchUser = () => {
 
     return (
         <div>
-            <div className='mt-6 md:flex'>
-                <div>
+            <div className='w-full xl:flex block'>
+                <div className='flex-2 mb-4'>
                     <div>
                         <span className='text-white font-bold text-2xl '>Top Results</span>
                     </div>
-                    <div className='h-1 w-104'>
+                    <div className=''>
                         {
                             playlists[0] ? <div className='w-full mt-4'>
                                 <TopResults topPlaylist={playlists[0]} />
@@ -33,14 +33,14 @@ const SearchUser = () => {
                         }
                     </div>
                 </div>
-                <div className='w-full'>
+                <div className='flex-1 xl:ml-4 ml-0'>
                     <div>
                         <span className='text-white font-bold text-2xl ml-4'>Songs</span>
                     </div>
                     <div className='w-full mt-4'>
                         {
                             filteredSongs.map((song) => (
-                                <div className='w-full ml-5 mt-1' key={song.id}>
+                                <div className='w-full mt-1' key={song.id}>
                                     <a href={song.external_urls.spotify}>
                                         <PlaylistSong image={song.album.images[0]?.url} song={song.name} artist={song.artists[0].name} duration_ms={song.duration_ms} />
                                     </a>
@@ -49,15 +49,16 @@ const SearchUser = () => {
                         }
                     </div>
                 </div>
+
             </div>
             <div className='mt-10'>
                 <div>
-                    <h1 className='text-white font-bold text-2xl'>Artists</h1>
+                    <h1 className='text-white font-bold text-2xl mb-4'>Artists</h1>
                 </div>
-                <div className='grid grid-rows-1 grid-flow-col gap-3 mt-4'>
+                <div className="grid grid-cols-2 gap-y-6 gap-x-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xl:gap-x-6">
 
                     {filteredArtists.map((artist) => (
-                        <div key={artist.id}>
+                        <div key={artist.id} >
                             <Link to={`/artist/${artist.id}`}>
                                 <FountArtists image={artist.images[0]?.url} name={artist.name} type={artist.type} />
                             </Link>
@@ -67,26 +68,28 @@ const SearchUser = () => {
             </div>
             <div className='mt-10'>
                 <div>
-                    <h1 className='text-white font-bold text-2xl'>Albums</h1>
+                    <h1 className='text-white font-bold text-2xl mb-4'>Albums</h1>
                 </div>
-                <div className='grid grid-rows-1 grid-flow-col gap-3 mt-4'>
-
+                <div className="grid grid-cols-2 gap-y-6 gap-x-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xl:gap-x-6">
                     {filteredAlbums.map((album) => (
-                        <div key={album.id}>
-                            <FoundAlbums image={album.images[0]?.url} name={album.name} release={album.release_date} artist={album.artists[0]?.name} id={album.id} />
-                        </div>
+                        <div key={album.id} >
+                            <Link to={`/album/${album.id}`}>
+                                <FoundAlbums image={album.images[0]?.url} name={album.name} release={album.release_date} artist={album.artists[0]?.name} />
+                            </Link>
+                        </div> 
                     ))}
                 </div>
             </div>
             <div className='mt-10'>
                 <div>
-                    <h1 className='text-white font-bold text-2xl'>Playlists</h1>
+                    <h1 className='text-white font-bold text-2xl mb-4'>Playlists</h1>
                 </div>
-                <div className='grid grid-rows-1 grid-flow-col gap-3 mt-4'>
-
+                <div className="grid grid-cols-2 gap-y-6 gap-x-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xl:gap-x-6">
                     {filteredPlaylists.map((playlist) => (
                         <div key={playlist.id}>
-                            <FoundPlaylists image={playlist.images[0]?.url} name={playlist.name} by={playlist.owner.display_name} id={playlist.id} />
+                            <Link to={`/playlist/${playlist.id}`}>
+                                <FoundPlaylists image={playlist.images[0]?.url} name={playlist.name} by={playlist.owner.display_name} />
+                            </Link>
                         </div>
                     ))}
                 </div>

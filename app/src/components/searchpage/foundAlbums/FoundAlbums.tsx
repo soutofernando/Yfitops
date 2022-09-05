@@ -6,15 +6,15 @@ interface AlbumProps {
     name: string
     release: string
     artist: string
-    id: string
+   
 }
 
-const FoundAlbums: FC<AlbumProps> = ({ image, name, release, artist, id }) => {
+const FoundAlbums: FC<AlbumProps> = ({ image, name, release, artist }) => {
     return (
-        <Link to={`/album/${id}`}>
-            <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64'>
+       
+            <div className='p-4 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-full h-64'>
                 <div>
-                    <img src={image} className="rounded-full h-36 " />
+                    <img src={image} className="rounded-md h-36 w-full" />
                 </div>
                 <div className='mt-4'>
                     <p className='text-white w-full text-xl font-bold overflow-hidden whitespace-nowrap text-ellipsis'>{name}</p>
@@ -31,7 +31,6 @@ const FoundAlbums: FC<AlbumProps> = ({ image, name, release, artist, id }) => {
                     </div>
                 </div>
             </div>
-        </Link>
     )
 }
 

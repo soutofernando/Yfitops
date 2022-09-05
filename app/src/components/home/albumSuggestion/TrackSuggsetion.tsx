@@ -13,7 +13,7 @@ const TrackSuggestion: FC<Props> = ({ name, date, image, time, href }) => {
 
   return (
     <a href={href}>
-      <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64'>
+      <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-44 h-64'>
         <div>
           <img src={image} className="h-36 rounded-md" />
         </div>

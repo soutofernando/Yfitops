@@ -48,17 +48,17 @@ const SpotifyPodcasts = () => {
                     <span className='text-white font-bold text-xl'>Tops Podcasts</span>
                 </Link>
             </div>
-            <div className='flex'>
+            <div className="grid grid-cols-1 gap-y-6 gap-x-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xl:gap-x-6">
                 {SPOTIFY_PODCASTS.map((podcast) => (
-                    <div className='p-6 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-48 h-64 ml-4' key={podcast.id} >
+                    <div className='hover:transition-all p-4 bg-black-gray rounded-md hover:bg-black-gray-hover text-white w-full h-72' key={podcast.id} >
                         <div>
                             <img src={podcast.img} className="rounded-md h-36 " />
                         </div>
                         <div className='mt-4'>
-                            <p className='text-white w-full text-lg font-bold overflow-hidden whitespace-nowrap text-ellipsis'>{podcast.name}</p>
+                            <p className='text-white  text-lg font-bold overflow-hidden whitespace-nowrap text-ellipsis'>{podcast.name}</p>
                         </div>
                         <div className='mt-1 pb-10'>
-                            <p className='text-gray-white font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>{podcast.description}</p>
+                            <p className='text-gray-white  font-semibold overflow-hidden whitespace-nowrap text-ellipsis'>{podcast.description}</p>
                         </div>
                     </div>
                 ))}

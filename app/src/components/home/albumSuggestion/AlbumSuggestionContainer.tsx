@@ -21,7 +21,7 @@ const AlbumSuggestionContainer = () => {
                     </div>
 
                     <div className="max-w-2xl lg:max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-2 gap-y-6 gap-x-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:gap-x-6">
+                        <div className="grid grid-cols-1 gap-y-6 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 xl:gap-x-6">
                             {recommendations.map((recommendation: getRecommendations) => (
                                 <div key={recommendation.id}>
                                     <TrackSuggestion name={recommendation.album.name} image={recommendation.album.images[0]?.url} date={recommendation.album.release_date} time={recommendation.duration_ms} href={recommendation.external_urls.spotify} />

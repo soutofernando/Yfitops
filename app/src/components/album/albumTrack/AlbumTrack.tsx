@@ -20,7 +20,7 @@ const AlbumTrack: FC<AlbumTrackProps> = ({ link, name, number_track, artist, dur
                     <div className='text-gray-white text-bold '>
                         <span>{number_track}</span>
                     </div>
-                    <div className='flex items-center ml-3'>
+                <div className='flex items-center ml-3'>
                         <div className='text-gray-white px-4'>
                             <div>
                                 <span className='text-white font-semibold'>{name}</span>

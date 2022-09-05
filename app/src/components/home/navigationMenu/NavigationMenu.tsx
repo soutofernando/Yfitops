@@ -33,7 +33,7 @@ const NavigationMenu = () => {
                                     )}
                                 </Disclosure.Button>
                             </div>
-                            <div className="flex-1 flex  items-center lg:justify-start justify-center sm:items-stretch ">
+                            <div className="flex-1 flex  items-center lg:justify-start justify-end sm:items-stretch ">
                                 <div className='flex items-center h-6'>
                                     <div>
                                         <NavigationLocationBtns />
